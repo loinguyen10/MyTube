@@ -31,7 +31,7 @@ const ResultHeader = (props) => {
 
     const getData = async () => {
         try {
-            const value = await AsyncStorage.getItem('searchRe');
+            const value = await AsyncStorage.getItem('searchRecently');
             if (value !== null) {
                 console.log("get "+value);
                 return setTxtSearch(value);
@@ -44,7 +44,7 @@ const ResultHeader = (props) => {
     const refershScreen = useIsFocused();
 
     useEffect(() => {
-        getData('searchRe');
+        getData();
     }, [refershScreen]);
 
     return (

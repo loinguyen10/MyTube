@@ -1,2 +1,2 @@
-export let API_KEY = "AIzaSyA8wyt4EiDrHf1P950xCShD2hkLNWTKe8M";
-export let API_JSON_DB = 'http://192.168.8.104:3000/download';
+export let API_KEY_1 = "AIzaSyA8wyt4EiDrHf1P950xCShD2hkLNWTKe8M";
+export let API_KEY_2 = "AIzaSyD-5g7K3h-htIcugCC3bQYmojcmEBgfclU";

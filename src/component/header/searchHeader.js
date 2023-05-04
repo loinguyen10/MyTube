@@ -31,7 +31,7 @@ const SearchHeader = (props) => {
 
     const storeData = async () => {
         try {
-          await AsyncStorage.setItem('searchRe', txtSearch);
+          await AsyncStorage.setItem('searchRecently', txtSearch);
           navigation.navigate("Result", {value: txtSearch})
         } catch (e) {
           console.log('Error storing data: ', e);

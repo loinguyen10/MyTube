@@ -2,6 +2,8 @@ import { View, StyleSheet, Image, Text, FlatList } from "react-native";
 import { useEffect, useState } from "react";
 import { useIsFocused } from '@react-navigation/native';
 import CardVideo from "../component/card/cardVideo";
+import { API_KEY_1, API_KEY_2 } from "../api/api";
+import { TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
@@ -15,10 +17,8 @@ const Result = (props) => {
 
     const route = props.route;
     const value = route.params?.value;
-    let key1 = "AIzaSyA8wyt4EiDrHf1P950xCShD2hkLNWTKe8M";
-    let key2 = "AIzaSyD-5g7K3h-htIcugCC3bQYmojcmEBgfclU";
 
-    let uri = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${value}&type=video&key=${key2}`;
+    let uri = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${value}&type=video&key=${API_KEY_2}`;
 
     const refershScreen = useIsFocused();
 
@@ -41,11 +41,13 @@ const Result = (props) => {
             <FlatList
                 data={list}
                 renderItem={({ item }) =>
-                <CardVideo
+                <TouchableOpacity onPress={() => navigation.navigate("Video",{videoId: item.id.videoId})}>
+                    <CardVideo
                     videoId = {item.id.videoId}
                     videoTitle = {item.snippet.title}
                     videoChannelName = {item.snippet.channelTitle}  
                 />
+                </TouchableOpacity>
                 }
                 keyExtractor={(item) => item.id.videoId}
             />
