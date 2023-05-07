@@ -18,7 +18,7 @@ const Result = (props) => {
     const route = props.route;
     const value = route.params?.value;
 
-    let uri = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${value}&type=video&key=${API_KEY_2}`;
+    let uri = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&q=${value}&type=video&key=${API_KEY_2}`;
 
     const refershScreen = useIsFocused();
 
@@ -41,7 +41,7 @@ const Result = (props) => {
             <FlatList
                 data={list}
                 renderItem={({ item }) =>
-                <TouchableOpacity onPress={() => navigation.navigate("Video",{videoId: item.id.videoId})}>
+                <TouchableOpacity onPress={() => navigation.navigate("Video",{videoId: item.id.videoId, videoTitle: item.snippet.title, videoChannelName: item.snippet.channelTitle})}>
                     <CardVideo
                     videoId = {item.id.videoId}
                     videoTitle = {item.snippet.title}

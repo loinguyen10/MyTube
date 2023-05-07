@@ -39,7 +39,7 @@ const CardVideo = (props) => {
                 <View style={styles.title}>
                     <MaterialIcons name="account-circle" size={50} />
                     <View>
-                        <Text style={{ fontSize: 20, width: Dimensions.get("screen").width - 70 }} ellipsizeMode="tail" numberOfLines={2}>{props.videoTitle}</Text>
+                        <Text style={{ fontSize: 15, width: Dimensions.get("screen").width - 70 }} ellipsizeMode="tail" numberOfLines={2}>{props.videoTitle}</Text>
                         <Text>{props.videoChannelName}</Text>
                     </View>
                 </View>

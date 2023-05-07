@@ -1,5 +1,4 @@
 import { Video, ResizeMode } from 'expo-av';
-import { API_KEY_1, API_KEY_2 } from "../api/api";
 import { View } from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from 'react-native';
@@ -7,6 +6,8 @@ import { StyleSheet, StatusBar } from 'react-native';
 import React from 'react';
 import ytdl from 'react-native-ytdl';
 import { SafeAreaView } from 'react-native';
+import { Text } from 'react-native';
+import { Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,13 +20,20 @@ const styles = StyleSheet.create({
     width: '100%',
     aspectRatio: 16 / 9,
     resizeMode: 'contain',
-    borderWidth: 2,
-    borderColor: 'red'
+    borderWidth: 1,
+    borderColor: 'red',
+    backgroundColor: 'gray'
   },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    width: Dimensions.get("screen").width - 70,
   },
 });
 
@@ -33,8 +41,12 @@ const VideoS = (props) => {
 
   const route = props.route;
   const videoId = route.params?.videoId;
+  const videoTitle = route.params?.videoTitle;
+  const videoChannelName = route.params?.videoChannelName;
 
   const video = useRef(null);
+  const [status, setStatus] = useState({});
+  const [pause,setPause] = useState(0);
 
   const getDownloadUrl = async () => {
     try {
@@ -46,6 +58,17 @@ const VideoS = (props) => {
     } catch (error) {
       console.error('Error:', error);
     }
+  };
+
+  const onPlaybackStatusUpdate = (playbackStatus) => {
+    if (playbackStatus.isLoaded && !playbackStatus.isPlaying && pause == 0) {
+      video.current.playAsync(); // Autoplay when playback status indicates the video is loaded and not playing
+    }
+    // if (playbackStatus.isLoaded && !playbackStatus.isPlaying && playbackStatus.didJustFinish) {
+    //   video.current.replayAsync(); // Replay the video after it ends
+    // }
+    setStatus(playbackStatus);
+    setPause(1);
   };
 
   useEffect(() => {
@@ -60,7 +83,16 @@ const VideoS = (props) => {
           style={styles.video}
           useNativeControls
           resizeMode={ResizeMode.CONTAIN}
-          shouldPlay />
+          onPlaybackStatusUpdate={status => onPlaybackStatusUpdate(status)} />
+
+        <View style={{margin: 10}}>
+        <Text style={styles.title} ellipsizeMode="tail">{videoTitle}</Text>
+        <Text>{videoChannelName}</Text>
+        <View>
+          <Text>1M Views</Text>
+          <Text>September 13th, 2022</Text>
+        </View>
+        </View>
       </View>
     </SafeAreaView>
 
