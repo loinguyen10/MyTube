@@ -23,11 +23,13 @@
     "react-native": "^0.71.7",
     "react-native-cookies": "^3.3.0",
     "react-native-firebase": "^5.6.0",
+    "react-native-progress": "^5.0.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-youtube": "^2.0.2",
     "react-native-yt-player": "^1.1.0",
     "react-native-ytdl": "^4.8.3",
-    "react-player": "^2.12.0"
+    "react-player": "^2.12.0",
+    "ytdl-core": "^4.11.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

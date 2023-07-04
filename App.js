@@ -5,6 +5,7 @@ import Home from './src/screen/homeScreen';
 import Search from './src/screen/searchScreen';
 import Result from './src/screen/resultScreen';
 import VideoS from './src/screen/videoScreen';
+import TestS from './src/screen/testScreen';
 
 import HomeHeader from './src/component/header/homeHeader';
 import SearchHeader from './src/component/header/searchHeader';
@@ -18,10 +19,11 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} options={{header: HomeHeader}}/>
+        {/* <Stack.Screen name="Home" component={Home} options={{header: HomeHeader}}/>
         <Stack.Screen name="Search" component={Search} options={{header: SearchHeader}}/>
         <Stack.Screen name="Result" component={Result} options={{header: ResultHeader}}/>
-        <Stack.Screen name="Video" component={VideoS} options={{headerShown: false}}/>
+        <Stack.Screen name="Video" component={VideoS} options={{headerShown: false}}/> */}
+        <Stack.Screen name="Test" component={TestS} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
