@@ -1,5 +1,5 @@
 import { Video, ResizeMode } from 'expo-av';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from 'react-native';
 import { StyleSheet, StatusBar } from 'react-native';
