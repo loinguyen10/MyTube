@@ -1,42 +1,18 @@
 import React from "react";
 import { View, StyleSheet, Image, Text, FlatList, Dimensions, TouchableOpacity } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
+import { styles } from "../../value/style";
 
-const styles = StyleSheet.create({
-    title: {
-        paddingTop: 10,
-        flexDirection: "row",
-        marginHorizontal: 5,
-    },
-
-    card: {
-        elevation: 4,
-        marginVertical: 10,
-    },
-
-    time: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        backgroundColor: 'black',
-        color: 'white',
-        padding: 2,
-        paddingHorizontal: 6,
-        margin: 5,
-    }
-
-});
-
-const CardVideo = (props) => {
+const CardVerticalVideo = (props) => {
     const navigation = props.navigation;
 
     return (
-            <View style={styles.card}>
+            <View style={styles.cardVideoVerticalCard}>
                 <View style={{ position: 'relative' }}>
                     <Image style={{ width: '100%', aspectRatio: 16 / 9, resizeMode: 'cover' }} source={{ uri: `https://img.youtube.com/vi/${props.videoId}/hqdefault.jpg` }} />
-                    <Text style={styles.time}>00:00</Text>
+                    <Text style={styles.cardVideoTime}>00:00</Text>
                 </View>
-                <View style={styles.title}>
+                <View style={styles.cardVideoTitle}>
                     <MaterialIcons name="account-circle" size={50} />
                     <View>
                         <Text style={{ fontSize: 15, width: Dimensions.get("screen").width - 70 }} ellipsizeMode="tail" numberOfLines={2}>{props.videoTitle}</Text>
@@ -48,4 +24,4 @@ const CardVideo = (props) => {
     )
 }
 
-export default CardVideo;
+export default CardVerticalVideo;
